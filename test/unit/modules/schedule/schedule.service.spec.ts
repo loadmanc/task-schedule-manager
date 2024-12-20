@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ScheduleService } from '../../../../src/schedule/schedule.service';
+import { ScheduleService } from '../../../../../src/modules/schedule/schedule.service';
 
 describe('ScheduleService', () => {
   let service: ScheduleService;
