@@ -1,20 +1,19 @@
-// src/modules/schedule/dto/create-schedule.dto.ts
-import { IsDateString, IsOptional, IsNumber } from 'class-validator'
+import { IsOptional, IsNumber, IsDate } from 'class-validator'
+import { CreateTaskDTO } from 'src/modules/task/dto/createtask.dto'
 
-export class CreateTaskDTO {
+export class CreateScheduleDTO {
   @IsNumber()
   accountId: number
 
   @IsNumber()
   agentId: number
 
-  @IsDateString()
-  startTime: string
+  @IsDate()
+  startTime: Date
 
-  @IsDateString()
-  endTime: string
+  @IsDate()
+  endTime: Date
 
   @IsOptional()
   tasks?: CreateTaskDTO[]
-
 }

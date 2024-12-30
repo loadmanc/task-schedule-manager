@@ -1,6 +1,6 @@
 // src/modules/schedule/dto/create-schedule.dto.ts
 
-import { IsNumber, IsString, IsDate } from 'class-validator'
+import { IsNumber, IsString, IsDate, IsEnum } from 'class-validator'
 import { TaskTypeDTO } from './task.dto'
 
 export class CreateTaskDTO {
@@ -16,5 +16,6 @@ export class CreateTaskDTO {
   @IsString()
   scheduleId: string
 
-  Type: TaskTypeDTO
-}  
+  @IsEnum(TaskTypeDTO)
+  type: TaskTypeDTO
+}

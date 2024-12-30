@@ -1,4 +1,4 @@
-import { TaskDTO } from "src/modules/task/dto/task.dto"
+import { TaskDTO } from 'src/modules/task/dto/task.dto'
 
 export interface ScheduleDTO {
   id: string

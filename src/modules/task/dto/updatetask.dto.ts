@@ -1,4 +1,5 @@
-import { IsDate, IsOptional, IsNumber } from 'class-validator'
+import { IsDate, IsOptional, IsNumber, IsEnum, IsString } from 'class-validator'
+import { TaskTypeDTO } from './task.dto'
 
 export class UpdateTaskDTO {
   @IsOptional()
@@ -7,15 +8,17 @@ export class UpdateTaskDTO {
 
   @IsOptional()
   @IsNumber()
-  agentId: number
+  duration: number
 
   @IsOptional()
   @IsDate()
   startTime: Date
 
   @IsOptional()
-  @IsDate()
-  endTime: Date
+  @IsString()
+  scheduleId: string
 
+  @IsOptional()
+  @IsEnum(TaskTypeDTO)
+  type: TaskTypeDTO
 }
-
