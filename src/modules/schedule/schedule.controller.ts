@@ -10,30 +10,30 @@ export class ScheduleController {
   constructor(private readonly scheduleService: ScheduleService) {}
 
   @Post()
-  create(@Body() createScheduleDto: CreateScheduleDTO): Promise<ScheduleDTO> {
-    return this.scheduleService.createSchedule(createScheduleDto)
+  async create(@Body() createScheduleDto: CreateScheduleDTO): Promise<ScheduleDTO> {
+    return await this.scheduleService.createSchedule(createScheduleDto)
   }
 
   @Get()
-  findAll(): Promise<ScheduleDTO[]> {
-    return this.scheduleService.getSchedules()
+  async findAll(): Promise<ScheduleDTO[]> {
+    return await this.scheduleService.getSchedules()
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<ScheduleDTO | null> {
-    return this.scheduleService.getScheduleForId(id)
+  async findOne(@Param('id') id: string): Promise<ScheduleDTO | null> {
+    return await this.scheduleService.getScheduleForId(id)
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateScheduleDto: UpdateScheduleDTO,
   ): Promise<ScheduleDTO> {
-    return this.scheduleService.updateSchedule(id, updateScheduleDto)
+    return await this.scheduleService.updateSchedule(id, updateScheduleDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<ScheduleDTO> {
-    return this.scheduleService.deleteSchedule(id)
+  async remove(@Param('id') id: string): Promise<void> {
+    return await this.scheduleService.deleteSchedule(id)
   }
 }

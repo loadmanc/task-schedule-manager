@@ -3,8 +3,7 @@ import { TaskService } from '../../../../src/modules/task/task.service'
 import { PrismaService } from '../../../../src/prisma.service'
 import { CreateTaskDTO } from '../../../../src/modules/task/dto/createtask.dto'
 import { UpdateTaskDTO } from '../../../../src/modules/task/dto/updatetask.dto'
-import { TaskType } from '../../../../src/modules/task/task.service'
-import { TaskTypeDTO } from '../../../../src/modules/task/dto/task.dto'
+import { TaskTypeDTO } from 'src/modules/task/dto/task.type.dto'
 
 describe('TaskService', () => {
   let service: TaskService
@@ -53,7 +52,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: createTaskDto.startTime,
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',
@@ -74,7 +73,7 @@ describe('TaskService', () => {
           accountId: 1,
           startTime: new Date(),
           duration: 60,
-          type: TaskType.WORK,
+          type: TaskTypeDTO.WORK,
           scheduleId: 'schedule-1',
           schedule: {
             id: 'schedule-1',
@@ -95,7 +94,7 @@ describe('TaskService', () => {
           accountId: task.accountId,
           startTime: task.startTime,
           duration: task.duration,
-          type: TaskType.WORK,
+          type: TaskTypeDTO.WORK,
           scheduleId: task.scheduleId,
           schedule: {
             id: task.schedule.id,
@@ -116,7 +115,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: new Date(),
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',
@@ -135,7 +134,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: task.startTime,
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',
@@ -185,7 +184,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: updateTaskDto.startTime,
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',
@@ -205,7 +204,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: new Date(),
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',
@@ -224,7 +223,7 @@ describe('TaskService', () => {
         accountId: 1,
         startTime: task.startTime,
         duration: 60,
-        type: TaskType.WORK,
+        type: TaskTypeDTO.WORK,
         scheduleId: 'schedule-1',
         schedule: {
           id: 'schedule-1',

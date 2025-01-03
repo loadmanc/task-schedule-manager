@@ -1,9 +1,10 @@
-import { ScheduleDTO } from 'src/modules/schedule/dto/schedule.dto'
+import { TaskTypeDTO } from 'src/modules/task/dto/task.type.dto'
+// import { ScheduleDTO } from 'src/modules/schedule/dto/schedule.dto'
 
-export enum TaskTypeDTO {
-  BREAK = 'BREAK',
-  WORK = 'WORK',
-}
+// export enum TaskTypeDTO {
+//   BREAK = 'BREAK',
+//   WORK = 'WORK',
+// }
 
 export interface TaskDTO {
   id: string
@@ -12,5 +13,5 @@ export interface TaskDTO {
   startTime: Date
   duration: number
   scheduleId: string
-  schedule: ScheduleDTO
+  // schedule: ScheduleDTO
 }

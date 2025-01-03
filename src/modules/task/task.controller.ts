@@ -10,30 +10,30 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDTO): Promise<TaskDTO> {
-    return this.taskService.createTask(createTaskDto)
+  async create(@Body() createTaskDto: CreateTaskDTO): Promise<TaskDTO> {
+    return await this.taskService.createTask(createTaskDto)
   }
 
   @Get()
-  findAll(): Promise<TaskDTO[]> {
-    return this.taskService.getTasks()
+  async findAll(): Promise<TaskDTO[]> {
+    return await this.taskService.getTasks()
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<TaskDTO | null> {
-    return this.taskService.getTaskForId(id)
+  async findOne(@Param('id') id: string): Promise<TaskDTO | null> {
+    return await this.taskService.getTaskForId(id)
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateTaskDto: UpdateTaskDTO,
   ): Promise<TaskDTO> {
-    return this.taskService.updateTask(id, updateTaskDto)
+    return await this.taskService.updateTask(id, updateTaskDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<TaskDTO> {
-    return this.taskService.deleteTask(id)
+  async remove(@Param('id') id: string): Promise<void> {
+    return await this.taskService.deleteTask(id)
   }
 }

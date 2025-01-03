@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { TaskController } from '../../../../src/modules/task/task.controller'
 import { TaskService } from '../../../../src/modules/task/task.service'
 import { CreateTaskDTO } from '../../../../src/modules/task/dto/createtask.dto'
-import { TaskDTO, TaskTypeDTO } from '../../../../src/modules/task/dto/task.dto'
+import { TaskDTO } from '../../../../src/modules/task/dto/task.dto'
 import { UpdateTaskDTO } from '../../../../src/modules/task/dto/updatetask.dto'
-import { ScheduleDTO } from 'src/modules/schedule/dto/schedule.dto'
+import { TaskTypeDTO } from 'src/modules/task/dto/task.type.dto'
 
 describe('TaskController', () => {
   let taskController: TaskController
@@ -47,13 +47,6 @@ describe('TaskController', () => {
         startTime: new Date(),
         duration: 60,
         scheduleId: '456',
-        schedule: {
-          id: '456',
-          accountId: 123,
-          agentId: 789,
-          startTime: new Date(),
-          endTime: new Date(),
-        } as ScheduleDTO,
       }
 
       jest.spyOn(taskService, 'createTask').mockResolvedValue(result)
@@ -71,13 +64,6 @@ describe('TaskController', () => {
         startTime: new Date(),
         duration: 60,
         scheduleId: '456',
-        schedule: {
-          id: '456',
-          accountId: 123,
-          agentId: 789,
-          startTime: new Date(),
-          endTime: new Date(),
-        } as ScheduleDTO,
       }]
 
       jest.spyOn(taskService, 'getTasks').mockResolvedValue(result)
@@ -95,13 +81,6 @@ describe('TaskController', () => {
         startTime: new Date(),
         duration: 60,
         scheduleId: '456',
-        schedule: {
-          id: '456',
-          accountId: 123,
-          agentId: 789,
-          startTime: new Date(),
-          endTime: new Date(),
-        } as ScheduleDTO,
       }
 
       jest.spyOn(taskService, 'getTaskForId').mockResolvedValue(result)
@@ -126,13 +105,6 @@ describe('TaskController', () => {
         startTime: new Date(),
         duration: 60,
         scheduleId: '456',
-        schedule: {
-          id: '456',
-          accountId: 123,
-          agentId: 789,
-          startTime: new Date(),
-          endTime: new Date(),
-        } as ScheduleDTO,
       }
 
       jest.spyOn(taskService, 'updateTask').mockResolvedValue(result)
@@ -143,25 +115,10 @@ describe('TaskController', () => {
 
   describe('remove', () => {
     it('should delete a task', async () => {
-      const result: TaskDTO = {
-        id: '1',
-        accountId: 123,
-        type: TaskTypeDTO.WORK,
-        startTime: new Date(),
-        duration: 60,
-        scheduleId: '456',
-        schedule: {
-          id: '456',
-          accountId: 123,
-          agentId: 789,
-          startTime: new Date(),
-          endTime: new Date(),
-        } as ScheduleDTO,
-      }
 
-      jest.spyOn(taskService, 'deleteTask').mockResolvedValue(result)
+      jest.spyOn(taskService, 'deleteTask').mockResolvedValueOnce(undefined)
 
-      expect(await taskController.remove('1')).toBe(result)
+      expect(await taskController.remove('1')).toHaveBeenCalled()
     })
   })
 })

@@ -1,5 +1,5 @@
 import { IsOptional, IsNumber, IsDate } from 'class-validator'
-import { UpdateTaskDTO } from 'src/modules/task/dto/updatetask.dto'
+import { UpdateScheduleTaskDTO } from './updatescheduletask.dto'
 
 export class UpdateScheduleDTO {
   @IsOptional()
@@ -17,4 +17,7 @@ export class UpdateScheduleDTO {
   @IsOptional()
   @IsDate()
   endTime: Date
+
+  @IsOptional()
+  tasks?: UpdateScheduleTaskDTO[]
 }

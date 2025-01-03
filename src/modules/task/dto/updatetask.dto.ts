@@ -1,5 +1,5 @@
 import { IsDate, IsOptional, IsNumber, IsEnum, IsString } from 'class-validator'
-import { TaskTypeDTO } from './task.dto'
+import { TaskTypeDTO } from 'src/modules/task/dto/task.type.dto'
 
 export class UpdateTaskDTO {
   @IsOptional()

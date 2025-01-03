@@ -3,7 +3,7 @@ import { ScheduleController } from '../../../../src/modules/schedule/schedule.co
 import { ScheduleService } from '../../../../src/modules/schedule/schedule.service'
 import { CreateScheduleDTO } from '../../../../src/modules/schedule/dto/createschedule.dto'
 import { UpdateScheduleDTO } from '../../../../src/modules/schedule/dto/updateschedule.dto'
-import { Schedule } from '@prisma/client'
+import { ScheduleDTO } from 'src/modules/schedule/dto/schedule.dto'
 
 describe('ScheduleController', () => {
   let scheduleController: ScheduleController
@@ -38,7 +38,8 @@ describe('ScheduleController', () => {
         startTime: new Date(),
         endTime: new Date(),
       }
-      const result: Schedule = { /* mock data */ } as Schedule
+      // TODO: Replace this with a mock Schedule object
+      const result: ScheduleDTO = { /* mock data */ } as ScheduleDTO
 
       jest.spyOn(scheduleService, 'createSchedule').mockResolvedValue(result)
 
@@ -48,7 +49,8 @@ describe('ScheduleController', () => {
 
   describe('findAll', () => {
     it('should return an array of schedules', async () => {
-      const result: Schedule[] = [{ /* mock data */ }] as Schedule[]
+      // TODO: Replace this with a mock Schedule object
+      const result: ScheduleDTO[] = [{ /* mock data */ }] as ScheduleDTO[]
 
       jest.spyOn(scheduleService, 'getSchedules').mockResolvedValue(result)
 
@@ -59,7 +61,8 @@ describe('ScheduleController', () => {
   describe('findOne', () => {
     it('should return a single schedule', async () => {
       const id = '1'
-      const result: Schedule = { /* mock data */ } as Schedule
+      // TODO: Replace this with a mock Schedule object
+      const result: ScheduleDTO = { /* mock data */ } as ScheduleDTO
 
       jest.spyOn(scheduleService, 'getScheduleForId').mockResolvedValue(result)
 
@@ -76,12 +79,12 @@ describe('ScheduleController', () => {
         startTime: new Date(),
         endTime: new Date(),
       }
-      const result: Schedule = { 
+      const result: ScheduleDTO = { 
         accountId: 123,
         agentId: 321,
         startTime: new Date(),
         endTime: new Date(),
-      } as Schedule
+      } as ScheduleDTO
 
       jest.spyOn(scheduleService, 'updateSchedule').mockResolvedValue(result)
 
@@ -92,16 +95,8 @@ describe('ScheduleController', () => {
   describe('remove', () => {
     it('should delete a schedule', async () => {
       const id = '1'
-      const result: Schedule = { 
-        accountId: 123,
-        agentId: 321,
-        startTime: new Date(),
-        endTime: new Date(),
-      } as Schedule
-
-      jest.spyOn(scheduleService, 'deleteSchedule').mockResolvedValue(result)
-
-      expect(await scheduleController.remove(id)).toBe(result)
+      jest.spyOn(scheduleService, 'deleteSchedule').mockResolvedValueOnce(undefined)
+      expect(await scheduleController.remove(id)).toHaveBeenCalled()
     })
   })
 })
