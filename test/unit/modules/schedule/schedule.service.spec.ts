@@ -104,7 +104,6 @@ describe('ScheduleService', () => {
         agentId: 1,
         startTime: new Date(),
         endTime: new Date(),
-        tasks: [],
       }
 
       const result: ScheduleDTO = {

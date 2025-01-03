@@ -17,7 +17,4 @@ export class UpdateScheduleDTO {
   @IsOptional()
   @IsDate()
   endTime: Date
-
-  @IsOptional()
-  tasks?: UpdateTaskDTO[]
 }

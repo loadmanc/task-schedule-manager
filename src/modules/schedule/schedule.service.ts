@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../../prisma.service'
 import { CreateScheduleDTO } from './dto/createschedule.dto'
 import { UpdateScheduleDTO } from './dto/updateschedule.dto'
-import { TaskTypeDTO } from '../task/dto/task.dto'
 import { ScheduleDTO } from './dto/schedule.dto'
 
 @Injectable()
@@ -46,12 +45,6 @@ export class ScheduleService {
         agentId: updateScheduleDto.agentId,
         startTime: updateScheduleDto.startTime,
         endTime: updateScheduleDto.endTime,
-        tasks: {
-          create: updateScheduleDto.tasks.map((task) => ({
-            ...task,
-            type: task.type as TaskTypeDTO,
-          })),
-        },
       },
     })
   }
